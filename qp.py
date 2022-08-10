@@ -500,7 +500,7 @@ class ActiveSet(object):
         return cur_x, self._calc_objective(cur_x), iter
 
 
-class ConstrainedLS(ActiveSet):
+class Example1(ActiveSet):
     """
     An active set method for constrained least squares
     Example:
@@ -528,6 +528,7 @@ class ConstrainedLS(ActiveSet):
     #   H = 2 * A.T * A
     #   h = 2 * A.T * b
     def _calc_Hessians(self):
+        from sympy import ordered, Matrix, hessian
         At = self.A.T
         self.H = 2 * np.dot(At, self.A)
         self.h = 2 * np.dot(At, self.b)
